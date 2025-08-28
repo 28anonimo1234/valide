@@ -1,0 +1,61 @@
+
+{
+  "name": "card_validations",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["cardNumber", "cardType", "isValid", "validatedAt"],
+        "properties": {
+          "cardNumber": {
+            "bsonType": "string",
+            "description": "Número do cartão (mascarado para segurança)"
+          },
+          "cardType": {
+            "bsonType": "string",
+            "enum": ["visa", "mastercard", "amex", "discover", "diners", "jcb", "unknown"],
+            "description": "Tipo/bandeira do cartão"
+          },
+          "isValid": {
+            "bsonType": "bool",
+            "description": "Se o cartão passou na validação"
+          },
+          "validationDetails": {
+            "bsonType": "object",
+            "description": "Detalhes da validação"
+          },
+          "ipAddress": {
+            "bsonType": "string",
+            "description": "IP de origem da validação"
+          },
+          "userAgent": {
+            "bsonType": "string",
+            "description": "User agent do navegador"
+          },
+          "creator": {
+            "bsonType": "string",
+            "description": "Criador do registro"
+          },
+          "validatedAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data e hora da validação"
+          },
+          "createdAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação do registro"
+          },
+          "updatedAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de atualização do registro"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}
